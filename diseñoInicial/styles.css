@@ -5,7 +5,15 @@ html {
     scroll-padding-top: 100px;
 }
 
+/* Renderizado de fuentes más nítido en todas las pantallas */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 /* --- ANIMACIONES --- */
+
+/* Fade Up: Para textos que suben al aparecer */
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -21,40 +29,93 @@ html {
     animation: fadeUp 1s ease-out forwards;
 }
 
+/* Fade In: Para que la imagen del arco no aparezca de golpe */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in-image {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* Slide Down: Animación suave para abrir el menú móvil */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#mobile-menu:not(.hidden) {
+    animation: slideDown 0.3s ease-out forwards;
+}
+
 /* --- CLASES DE UTILIDAD PARA JAVASCRIPT --- */
 
 /* Estilo del Navbar cuando se hace Scroll */
 .navbar-scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.98); /* Más opaco para mejor lectura */
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    padding-top: 0.75rem !important; /* py-3 */
-    padding-bottom: 0.75rem !important;
+    transition: all 0.3s ease;
+}
+
+/* RESPONSIVE NAVBAR: Ajustamos el padding según el dispositivo */
+.navbar-scrolled {
+    /* Móvil: Barra más fina para ganar espacio */
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+@media (min-width: 768px) {
+    /* Tablet y PC: Barra más espaciosa */
+    .navbar-scrolled {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
 }
 
 /* Cambios de color de texto en el navbar al hacer scroll */
-.navbar-scrolled #logo-text {
-    color: #0f172a; /* Slate-900 */
+.navbar-scrolled #logo-text { color: #0f172a; /* Slate-900 */ }
+.navbar-scrolled #menu-text { color: #475569; /* Slate-600 */ }
+.navbar-scrolled #btn-login { color: #0f172a; /* Slate-900 */ }
+.navbar-scrolled #btn-soy-empresa { color: #0f172a; /* Slate-900 */ }
+.navbar-scrolled #mobile-menu-btn { color: #0f172a; /* Slate-900 */ }
+
+/* --- TARJETAS INTERACTIVAS --- */
+
+/* Efecto Hover: Solo se activa en dispositivos que tienen ratón (PC) */
+/* Esto evita que en móviles el efecto se quede "pegado" al tocar */
+@media (hover: hover) {
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
 }
 
-.navbar-scrolled #menu-text {
-    color: #475569; /* Slate-600 */
-}
+/* --- AJUSTES RESPONSIVOS EXTRA (Móviles Pequeños) --- */
 
-.navbar-scrolled #btn-soy-empresa {
-    color: #0f172a; /* Slate-900 */
-}
-
-.navbar-scrolled #mobile-menu-btn {
-    color: #0f172a; /* Slate-900 */
-}
-
-/* Efecto Hover en Tarjetas */
-.hover-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+/* Para móviles antiguos o muy estrechos (< 380px) */
+@media (max-width: 380px) {
+    /* Reducir tamaño del título gigante de "Bienvenido" */
+    h1.text-5xl { 
+        font-size: 2.25rem !important; /* ~36px */
+        line-height: 1.1;
+    }
+    
+    /* Asegurar que el contenido no toque los bordes */
+    .container { 
+        padding-left: 1rem !important; 
+        padding-right: 1rem !important; 
+    }
+    
+    /* Ajustar botones del menú móvil */
+    #mobile-menu a, #mobile-menu button {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
 }
