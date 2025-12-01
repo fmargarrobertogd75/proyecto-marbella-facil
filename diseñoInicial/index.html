@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marbella Fácil - La Guía Oficial</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Configuración Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' },
+                        slate: { 900: '#0f172a' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white font-sans text-slate-900 selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 bg-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 group cursor-pointer no-underline">
+                <span id="logo-text" class="text-2xl font-serif font-bold tracking-tight text-white drop-shadow-md transition-colors">
+                    Marbella<span class="text-amber-500">.Fácil</span>
+                </span>
+            </a>
+
+            <!-- Menú Desktop (Enlaces a páginas) -->
+            <div class="hidden md:flex items-center gap-10">
+                <ul id="menu-text" class="flex gap-8 text-sm font-medium tracking-wide text-white/90 drop-shadow-sm transition-colors list-none m-0">
+                    <li class="relative group">
+                        <a href="playas.html" class="hover:text-amber-500 transition-colors block py-2">Playas</a>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all group-hover:w-full"></span>
+                    </li>
+                    <li class="relative group">
+                        <a href="transporte.html" class="hover:text-amber-500 transition-colors block py-2">Transporte</a>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all group-hover:w-full"></span>
+                    </li>
+                    <li class="relative group">
+                        <a href="gastronomia.html" class="hover:text-amber-500 transition-colors block py-2">Gastronomía</a>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all group-hover:w-full"></span>
+                    </li>
+                    <li class="relative group">
+                        <a href="agenda.html" class="hover:text-amber-500 transition-colors block py-2">Agenda</a>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all group-hover:w-full"></span>
+                    </li>
+                </ul>
+
+                <div class="flex items-center gap-4">
+                    <!-- Enlace Secundario: Soy Empresa -->
+                    <a href="empresas.html" id="btn-soy-empresa" class="text-sm font-semibold transition-colors text-white drop-shadow-md hover:text-amber-500 no-underline">
+                        Soy Empresa
+                    </a>
+                    <!-- Botón Principal Amarillo: Iniciar Sesión -->
+                    <a href="login.html" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-2.5 rounded-none font-medium transition-all text-xs tracking-widest uppercase hover:shadow-lg shadow-black/20 no-underline">
+                        Iniciar Sesión
+                    </a>
+                </div>
+            </div>
+
+            <!-- Botón Móvil -->
+            <button id="mobile-menu-btn" class="md:hidden text-white transition-colors">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 py-4 px-6 flex-col gap-4 md:hidden">
+            <a href="playas.html" class="text-slate-600 font-medium py-2 border-b border-slate-100 block">Playas</a>
+            <a href="transporte.html" class="text-slate-600 font-medium py-2 border-b border-slate-100 block">Transporte</a>
+            <a href="gastronomia.html" class="text-slate-600 font-medium py-2 border-b border-slate-100 block">Gastronomía</a>
+            <a href="agenda.html" class="text-slate-600 font-medium py-2 border-b border-slate-100 block">Agenda</a>
+            <a href="empresas.html" class="text-amber-600 font-bold py-2 border-b border-slate-100 block">Soy Empresa</a>
+            <a href="login.html" class="w-full bg-slate-900 text-white py-3 rounded mt-2 block text-center">Iniciar Sesión</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-slate-900">
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Arco_de_Marbella_%28M%C3%A1laga%29.jpg/1920px-Arco_de_Marbella_%28M%C3%A1laga%29.jpg" 
+                alt="Arco de Marbella" 
+                class="w-full h-full object-cover object-bottom fade-in-image"
+                onerror="this.src='https://images.unsplash.com/photo-1543329976-5743b1236113?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-slate-900/50"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-4 text-center mt-20 animate-fade-up">
+            <p class="text-amber-400 text-sm font-bold tracking-[0.2em] uppercase mb-4 drop-shadow-md">
+                La Guía Oficial
+            </p>
+            <h1 class="text-5xl md:text-8xl font-serif text-white mb-8 leading-tight drop-shadow-2xl">
+                Bienvenido a <br />
+                <span class="italic font-light text-amber-100">Marbella</span>
+            </h1>
+
+            <div class="max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-full flex items-center shadow-2xl transition-transform hover:scale-[1.02]">
+                <div class="pl-6 text-white/70"><i data-lucide="search" width="20"></i></div>
+                <input 
+                    type="text" 
+                    placeholder="Encuentra restaurantes, playas o eventos..." 
+                    class="w-full bg-transparent px-4 py-3 outline-none text-white placeholder-white/70 font-light text-lg"
+                >
+                <button class="bg-white text-slate-900 hover:bg-amber-400 transition-colors px-8 py-3 rounded-full font-bold">
+                    Explorar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN PREVIEW PLAYAS -->
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-serif text-slate-900 mb-2">Estado de las Playas</h2>
+                    <p class="text-slate-500 font-light">Datos destacados. <a href="playas.html" class="text-amber-600 font-bold hover:underline">Ver mapa completo →</a></p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- CARD 1 -->
+                <a href="playas.html" class="group relative h-[420px] rounded-2xl overflow-hidden shadow-xl cursor-pointer bg-slate-200 hover-card block">
+                    <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c78?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-90"></div>
+                    <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+                        <i data-lucide="flag" class="text-emerald-500 fill-emerald-500 drop-shadow-lg" width="24" height="24"></i>
+                    </div>
+                    <div class="absolute bottom-0 w-full p-8 text-white">
+                        <h3 class="text-2xl font-serif font-bold mb-6">Playa de Nagüeles</h3>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="thermometer" class="mx-auto text-amber-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">21°C</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="user" class="mx-auto text-blue-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">Media</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="check-circle" class="mx-auto text-emerald-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">Limpio</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- CARD 2 -->
+                <a href="playas.html" class="group relative h-[420px] rounded-2xl overflow-hidden shadow-xl cursor-pointer bg-slate-200 hover-card block">
+                     <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-90"></div>
+                    <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+                        <i data-lucide="flag" class="text-amber-400 fill-amber-400 drop-shadow-lg" width="24" height="24"></i>
+                    </div>
+                    <div class="absolute bottom-0 w-full p-8 text-white">
+                        <h3 class="text-2xl font-serif font-bold mb-6">Nikki Beach</h3>
+                        <div class="grid grid-cols-3 gap-4">
+                             <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="thermometer" class="mx-auto text-amber-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">22°C</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="user" class="mx-auto text-blue-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">Alta</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="check-circle" class="mx-auto text-emerald-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">Limpio</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- CARD 3 -->
+                <a href="playas.html" class="group relative h-[420px] rounded-2xl overflow-hidden shadow-xl cursor-pointer bg-slate-200 hover-card block">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-90"></div>
+                    <div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+                        <i data-lucide="flag" class="text-emerald-500 fill-emerald-500 drop-shadow-lg" width="24" height="24"></i>
+                    </div>
+                    <div class="absolute bottom-0 w-full p-8 text-white">
+                        <h3 class="text-2xl font-serif font-bold mb-6">Dunas de Cabopino</h3>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="thermometer" class="mx-auto text-amber-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">20.5°C</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="user" class="mx-auto text-blue-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">Baja</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10">
+                                <i data-lucide="alert-circle" class="mx-auto text-red-400 mb-2" width="20"></i>
+                                <span class="block text-lg font-bold">Medusas</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PREVIEW TRANSPORTE -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <!-- Columna Info -->
+                <div class="lg:col-span-5 flex flex-col justify-center">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider mb-6 w-fit">
+                        <i data-lucide="navigation" width="14"></i> Movilidad Urbana
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif text-slate-900 mb-6 leading-tight">
+                        Líneas y Horarios <br/>
+                        <span class="text-amber-600">Oficiales</span>
+                    </h2>
+                    <p class="text-slate-500 text-lg mb-8 leading-relaxed">
+                        Consulta las rutas principales y la frecuencia estimada de paso de los autobuses urbanos de Marbella.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="transporte.html" class="bg-slate-900 text-white px-8 py-4 font-medium hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 rounded-lg no-underline">
+                            <i data-lucide="map-pin" width="18"></i> Ver Todas las Líneas
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna Tabla Preview -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white shadow-2xl shadow-slate-200/60 rounded-3xl overflow-hidden border border-slate-100">
+                        <div class="bg-slate-50 px-8 py-6 border-b border-slate-100 flex justify-between items-center">
+                            <h3 class="font-bold text-slate-800 flex items-center gap-2">
+                                <i data-lucide="clock" class="text-amber-500" width="20"></i> Próximas Salidas
+                            </h3>
+                            <a href="transporte.html" class="text-xs font-bold text-amber-600 hover:underline">Ver todas →</a>
+                        </div>
+                        <div class="divide-y divide-slate-100">
+                            <!-- Linea Preview 1 -->
+                            <a href="transporte.html" class="p-6 hover:bg-slate-50 transition-colors block">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-xl bg-blue-900 text-white flex items-center justify-center font-bold">L1</div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-900">Centro - Puerto Banús</h4>
+                                            <span class="text-xs text-slate-500">Lun - Dom</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block font-bold text-amber-600">Cada 15 min</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- Linea Preview 2 -->
+                            <a href="transporte.html" class="p-6 hover:bg-slate-50 transition-colors block">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-bold">L2</div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-900">La Cañada - Estación</h4>
+                                            <span class="text-xs text-slate-500">Lun - Dom</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block font-bold text-amber-600">Cada 20 min</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN GASTRONOMÍA (Preview) -->
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-serif text-slate-900 mb-8">Gastronomía Selecta</h2>
+            <p class="text-slate-500 mb-12">Descubre los mejores restaurantes de la zona.</p>
+            <a href="gastronomia.html" class="inline-block bg-slate-900 text-white px-8 py-3 rounded-full font-bold hover:bg-slate-800 transition-colors">Ver Directorio Completo</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN AGENDA (Preview) -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-serif text-slate-900 mb-8">Próximos Eventos</h2>
+            <p class="text-slate-500 mb-12">No te pierdas nada de la agenda cultural.</p>
+            <a href="agenda.html" class="inline-block border-2 border-slate-900 text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-slate-900 hover:text-white transition-colors">Ver Calendario</a>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION EMPRESAS -->
+    <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-6">
+                Marbella Fácil Business
+            </span>
+            <h2 class="text-4xl md:text-5xl font-serif mb-6">
+                Impulsa tu negocio en la <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">Era Digital</span>
+            </h2>
+            <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+                Únete a la plataforma líder. Gestiona reservas, publica ofertas y conecta con miles de turistas.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="empresas.html" class="bg-gradient-to-r from-amber-400 to-amber-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-1 transition-all no-underline">
+                    Registrar mi Negocio
+                </a>
+                <a href="empresas.html" class="px-8 py-4 rounded-xl font-bold border border-slate-700 hover:bg-white/5 transition-colors text-slate-300 no-underline">
+                    Ver Planes
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-white py-16 border-t border-slate-800">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="text-2xl font-serif font-bold">Marbella<span class="text-amber-500">.Fácil</span></span>
+                <p class="text-slate-500 text-sm mt-2">© 2025 Proyecto Fin de Grado.</p>
+            </div>
+            <div class="flex gap-8 text-sm font-medium text-slate-400">
+                <a href="#" class="hover:text-white transition-colors no-underline">Privacidad</a>
+                <a href="#" class="hover:text-white transition-colors no-underline">Cookies</a>
+                <a href="#" class="hover:text-white transition-colors no-underline">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Principal -->
+    <script src="script.js"></script>
+</body>
+</html>

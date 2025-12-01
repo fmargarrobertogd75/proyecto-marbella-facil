@@ -1,0 +1,60 @@
+/* --- CONFIGURACIÓN GLOBAL --- */
+html {
+    scroll-behavior: smooth;
+    /* Evita que el navbar fijo tape el título al hacer scroll */
+    scroll-padding-top: 100px;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-up {
+    animation: fadeUp 1s ease-out forwards;
+}
+
+/* --- CLASES DE UTILIDAD PARA JAVASCRIPT --- */
+
+/* Estilo del Navbar cuando se hace Scroll */
+.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    padding-top: 0.75rem !important; /* py-3 */
+    padding-bottom: 0.75rem !important;
+}
+
+/* Cambios de color de texto en el navbar al hacer scroll */
+.navbar-scrolled #logo-text {
+    color: #0f172a; /* Slate-900 */
+}
+
+.navbar-scrolled #menu-text {
+    color: #475569; /* Slate-600 */
+}
+
+.navbar-scrolled #btn-soy-empresa {
+    color: #0f172a; /* Slate-900 */
+}
+
+.navbar-scrolled #mobile-menu-btn {
+    color: #0f172a; /* Slate-900 */
+}
+
+/* Efecto Hover en Tarjetas */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Marbella Fácil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: { amber: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }, slate: { 900: '#0f172a' } }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 font-sans h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-100">
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-block mb-4">
+                <span class="text-2xl font-serif font-bold tracking-tight text-slate-900">Marbella<span class="text-amber-500">.Fácil</span></span>
+            </a>
+            <h2 class="text-xl font-bold text-slate-700">Bienvenido de nuevo</h2>
+            <p class="text-slate-400 text-sm">Accede a tu cuenta para gestionar reservas</p>
+        </div>
+
+        <form class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Email</label>
+                <div class="relative">
+                    <input type="email" class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:border-amber-500 transition-colors" placeholder="tu@email.com">
+                    <i data-lucide="mail" width="18" class="absolute left-3 top-3.5 text-slate-400"></i>
+                </div>
+            </div>
+            
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Contraseña</label>
+                <div class="relative">
+                    <input type="password" class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:border-amber-500 transition-colors" placeholder="••••••••">
+                    <i data-lucide="lock" width="18" class="absolute left-3 top-3.5 text-slate-400"></i>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-sm">
+                <label class="flex items-center gap-2 cursor-pointer text-slate-500">
+                    <input type="checkbox" class="rounded text-amber-500 focus:ring-amber-500"> Recuérdame
+                </label>
+                <a href="#" class="text-amber-600 font-bold hover:underline">¿Olvidaste contraseña?</a>
+            </div>
+
+            <button type="button" class="w-full bg-slate-900 text-white font-bold py-3 rounded-lg hover:bg-slate-800 transition-colors shadow-lg">
+                Iniciar Sesión
+            </button>
+        </form>
+
+        <div class="mt-8 text-center text-sm text-slate-500">
+            ¿No tienes cuenta? <a href="#" class="text-amber-600 font-bold hover:underline">Regístrate</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
