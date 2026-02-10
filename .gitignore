@@ -1,0 +1,11 @@
+# Ignorar dependencias
+/frontend/node_modules/
+/backend/vendor/
+
+# Ignorar configuración local (muy importante para el TFG)
+/backend/.env
+/frontend/.env
+
+# Ignorar carpetas de compilación y caché
+/frontend/dist/
+/.vite/
