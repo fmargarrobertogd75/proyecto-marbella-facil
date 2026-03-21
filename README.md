@@ -93,8 +93,8 @@ El objetivo es ofrecer una experiencia unificada, escalable y mantenible, con un
 
 - **Backend**: Laravel 12, PHP 8.2+ (entorno Docker con PHP 8.4-fpm), Sanctum.
 - **Frontend**: React 19 + Vite 7 + React Router.
-- **Servidor frontend**: Nginx (con proxy interno a backend).
-- **Base de datos**: MySQL (conexion externa definida por variables de entorno).
+- **Servidor frontend**: Nginx.
+- **Base de datos**: MySQL remota (servidor del instituto) alcanzada via Tailscale.
 - **Contenedorizacion**: Docker + Docker Compose.
 - **IA**: Integracion con API de Groq para chat.
 
@@ -104,14 +104,13 @@ El objetivo es ofrecer una experiencia unificada, escalable y mantenible, con un
 [ Navegador ]
       |
       v
-[ Frontend React + Nginx ]  (puerto host: 3100)
-      | \
-      |  \__ /api -> proxy interno
-      v
-[ Backend Laravel ] (backend:8000 en red Docker)
+[ Frontend React + Nginx ]  (host:100.65.1.78 puerto 3100)
       |
       v
-[ MySQL ] (host externo/configurable)
+[ Backend Laravel ] (host:100.65.1.78 puerto 8000, contenedor en host network)
+      |
+      v
+[ MySQL ] (host:100.66.172.29 puerto 3306)
 ```
 
 ---
@@ -157,11 +156,13 @@ Crear un archivo `.env` en la raiz del repositorio (junto a `docker-compose.yml`
 ```env
 APP_KEY=base64:TU_APP_KEY_AQUI
 GROQ_API_KEY=tu_groq_api_key
-DB_HOST=host_mysql
+APP_URL=http://100.65.1.78:8000
+DB_HOST=100.66.172.29
 DB_PORT=3306
 DB_DATABASE=marbella_facil
-DB_USERNAME=usuario_mysql
+DB_USERNAME=desarrollador
 DB_PASSWORD=clave_mysql
+VITE_API_URL=http://100.65.1.78:8000/api
 ```
 
 ### 3) Construir y levantar servicios
@@ -172,9 +173,9 @@ docker compose up --build -d
 
 ### 4) Acceso
 
-- Frontend: `http://localhost:3100`
-- API (a traves de frontend): `http://localhost:3100/api`
-- Health backend (proxy): `http://localhost:3100/up`
+- Frontend: `http://100.65.1.78:3100`
+- API backend: `http://100.65.1.78:8000/api`
+- Health backend: `http://100.65.1.78:8000/up`
 
 ### 5) Ver logs
 
@@ -242,10 +243,10 @@ Variables relevantes:
 
 Variables relevantes:
 
-- `VITE_API_URL` (ejemplo local: `http://127.0.0.1:8000/api`)
+- `VITE_API_URL` (produccion: `http://100.65.1.78:8000/api`, local: `http://127.0.0.1:8000/api`)
 - `VITE_APP_NAME`
 
-En Docker, el frontend publica `/api` por proxy hacia el backend, por lo que puede usarse tambien ruta relativa segun estrategia de despliegue.
+En produccion, el frontend debe usar la URL completa del backend (`VITE_API_URL`) y no `localhost`.
 
 ---
 
