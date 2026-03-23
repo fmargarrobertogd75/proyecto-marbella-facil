@@ -31,10 +31,12 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        VITE_API_URL: ${VITE_API_URL}
+        VITE_API_URL: ${VITE_API_URL:-/api}
     container_name: marbella-frontend
     restart: always
     ports:
       - "3100:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - backend

@@ -1,5 +1,5 @@
 // src/api.js
-const API_URL = import.meta.env.VITE_API_URL || 'http://100.65.1.78:8000/api';
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 export const loginUsuario = async (credenciales) => {
     try {

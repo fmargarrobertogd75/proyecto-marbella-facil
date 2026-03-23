@@ -1,7 +1,9 @@
 #!/bin/bash
 
 echo "==> Sincronizando variables de entorno en .env..."
-for VAR in GROQ_API_KEY APP_KEY; do
+for VAR in APP_KEY GROQ_API_KEY APP_URL APP_ENV APP_DEBUG \
+           DB_CONNECTION DB_HOST DB_PORT DB_DATABASE DB_USERNAME DB_PASSWORD \
+           SESSION_DRIVER CACHE_STORE QUEUE_CONNECTION; do
     VAL=$(printenv "$VAR" || true)
     if [ -n "$VAL" ]; then
         if grep -q "^${VAR}=" /var/www/.env 2>/dev/null; then
