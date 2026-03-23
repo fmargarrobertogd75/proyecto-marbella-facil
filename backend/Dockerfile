@@ -27,8 +27,8 @@ WORKDIR /var/www
 # 5. Copiar los archivos del proyecto al contenedor
 COPY . .
 
-# 6. Crear un archivo .env si no existe para evitar errores de scripts
-RUN cp .env.example .env || touch .env
+# 6. Crear un archivo .env si no existe (no sobreescribir si ya existe con credenciales reales)
+RUN [ ! -f .env ] && cp .env.example .env || true
 
 # 7. INSTALACIÓN DE COMPOSER
 # Borrar vendor del repo y caché de paquetes para instalar limpio
