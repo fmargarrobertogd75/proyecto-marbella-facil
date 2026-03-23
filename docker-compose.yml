@@ -6,7 +6,8 @@ services:
       dockerfile: Dockerfile
     container_name: marbella-backend
     restart: always
-    network_mode: "host"
+    ports:
+      - "8000:8000"
     environment:
       APP_KEY: ${APP_KEY}
       GROQ_API_KEY: ${GROQ_API_KEY}
@@ -22,8 +23,10 @@ services:
       APP_NAME: MarbellaFacil
       APP_ENV: production
       APP_DEBUG: "false"
-      APP_URL: ${APP_URL:-http://100.65.1.78:8000}
+      APP_URL: ${APP_URL:-http://100.78.127.64:8000}
       APP_LOCALE: es
+    networks:
+      - marbella-net
 
   # Frontend (React + Nginx)
   frontend:
@@ -36,7 +39,11 @@ services:
     restart: always
     ports:
       - "3100:80"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     depends_on:
       - backend
+    networks:
+      - marbella-net
+
+networks:
+  marbella-net:
+    driver: bridge
