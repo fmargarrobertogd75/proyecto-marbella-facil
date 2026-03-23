@@ -10,6 +10,12 @@ const FLAG_ICON = {
   'Roja': { icon: AlertCircle, color: '#ef4444' },
 };
 
+const BEACH_PHOTO_BY_NAME = {
+  'Playa de Nagüeles': 'https://images.unsplash.com/photo-1509233725247-49e657c54213?w=1200&q=80',
+  'Playa de la Fontanilla': 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=1200&q=80',
+  'Playa del Cable': '/arc_19643_g.webp',
+};
+
 const BeachSection = () => {
   const [playas, setPlayas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -41,11 +47,12 @@ const BeachSection = () => {
           <div className="grid-3">
             {playas.map(p => {
               const flagData = FLAG_ICON[p.bandera] || FLAG_ICON['Verde'];
+              const beachPhoto = BEACH_PHOTO_BY_NAME[p.nombre] || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80';
               return (
                 <BeachCard
                   key={p.id}
                   name={p.nombre}
-                  img="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"
+                  img={beachPhoto}
                   temp={p.temperatura_agua ? `${p.temperatura_agua}°C` : '--'}
                   occupancy={p.ocupacion || 'Desconocida'}
                   status={p.estado_mar || 'Tranquilo'}

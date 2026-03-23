@@ -18,15 +18,23 @@ const OCUPACION_COLOR = { 'Baja': '#22c55e', 'Media': '#f59e0b', 'Alta': '#ef444
 const OCUPACION_PCT = { 'Baja': 25, 'Media': 55, 'Alta': 80, 'Completo': 100 };
 const MAR_COLOR = { 'Calma': '#22c55e', 'Rizado': '#f59e0b', 'Marejada': '#ef4444', 'Fuerte Marejada': '#7f1d1d' };
 
+const BEACH_PHOTO_BY_NAME = {
+  'Playa de Nagüeles': 'https://images.unsplash.com/photo-1509233725247-49e657c54213?w=1200&q=80',
+  'Playa de la Fontanilla': 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=1200&q=80',
+  'Playa del Cable': '/arc_19643_g.webp',
+};
+
 const BEACH_PHOTOS = [
-  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
-  'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=800&q=80',
-  'https://images.unsplash.com/photo-1500370010940-6bf6df4f4b7f?w=800&q=80',
-  'https://images.unsplash.com/photo-1586861203927-800a5acdce4d?w=800&q=80',
-  'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80',
-  'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=800&q=80',
-  'https://images.unsplash.com/photo-1509233725247-49e657c54213?w=800&q=80',
+  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80',
+  'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=1200&q=80',
+  'https://images.unsplash.com/photo-1500370010940-6bf6df4f4b7f?w=1200&q=80',
+  'https://images.unsplash.com/photo-1586861203927-800a5acdce4d?w=1200&q=80',
+  'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=80',
+  'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=1200&q=80',
+  'https://images.unsplash.com/photo-1509233725247-49e657c54213?w=1200&q=80',
 ];
+
+const getBeachPhoto = (name, idx) => BEACH_PHOTO_BY_NAME[name] || BEACH_PHOTOS[idx % BEACH_PHOTOS.length];
 
 const SERVICIOS_PLAYA = ['Socorrista', 'Alquiler hamacas', 'Zona de juegos', 'Acceso adaptado',
   'Ducha', 'Restaurante cercano', 'Parking', 'WiFi en chiringuito'];
@@ -36,7 +44,7 @@ const PlayaModal = ({ playa, onClose, idx }) => {
   if (!playa) return null;
   const bConfig = BANDERA_CONFIG[playa.bandera] || BANDERA_CONFIG['Verde'];
   const BFlag = bConfig.Icon;
-  const photo = BEACH_PHOTOS[idx % BEACH_PHOTOS.length];
+  const photo = getBeachPhoto(playa.nombre, idx);
 
   return (
     <div
@@ -139,7 +147,7 @@ const PlayaModal = ({ playa, onClose, idx }) => {
 /* ── CARD PLAYA ─────────────────────────────────────────────────── */
 const PlayaCard = ({ playa, idx, onClick }) => {
   const bConfig = BANDERA_CONFIG[playa.bandera] || BANDERA_CONFIG['Verde'];
-  const photo = BEACH_PHOTOS[idx % BEACH_PHOTOS.length];
+  const photo = getBeachPhoto(playa.nombre, idx);
 
   return (
     <div
